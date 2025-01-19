@@ -39,11 +39,15 @@ form.addEventListener('submit', event => {
 const getValue = () => {
   try {
     const formLS = JSON.parse(localStorage.getItem('feedback-form-state'));
-    if (formLS && formLS.email && formLS.message) {
-      input.value = formLS.email;
-      textArea.value = formLS.message;
-      formData.email = formLS.email;
-      formData.message = formLS.message;
+    if (formLS) {
+      if (formLS.email) {
+        input.value = formLS.email;
+        formData.email = formLS.email;
+      }
+      if (formLS.message) {
+        textArea.value = formLS.message;
+        formData.message = formLS.message;
+      }
     }
   } catch (error) {
     console.log(error);
